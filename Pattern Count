@@ -4,7 +4,7 @@
 *  Used As        : Contest
 *  Thoughts     => 
 *  The following code checks 1(0+)1 pattern across string using Regex with (?= lookahead assertion: matches without consuming).
-*  The function simply return the occurences of total matches.
+*  The function simply return the occurrences of total matches.
 *
 *  Constraints  =>
 *     1<=q<=20
