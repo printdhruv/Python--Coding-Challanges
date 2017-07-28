@@ -1,0 +1,30 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Maximum Subarray
+*  Used In        : Leetcode
+*  Used As        : 53
+*  Thoughts      =>  
+*  O(N)             We have attacked this problem with the brute force approach in Java.Given bigger array it will
+*                   consume lots of memory and time with the redundant lookup for numbers. The best solution is to
+*                   lookup an array with O(N) approach.
+*                   We initialize the localMaximum and globalMaximum before entering the loop.The localMaximum
+*                   add numbers from array[1....len(array)-1] and compare everytime with the globalMaximum.If the 
+*                   globalMaximum is lesser than the localMaximum then will update it.
+*                   By this approach, it will deal with the all possible cases including negative numbers.
+#!/bin/python3
+from random import randint
+class Solution(object):
+    def maxSubArray(self, array):
+        localMaxima = array[0]
+        globalMaxima = array[0]
+        for i in range(1, len(array)):
+            localMaxima += array[i]
+            globalMaxima = max(localMaxima, globalMaxima)
+        return globalMaxima
+
+solution_Object = Solution()
+array = []
+array.append(randint(-10^32,10^32))
+for x in range(randint(-10^32,10^32),randint(-10^32,10^32),randint(-10^32,10^32)):
+    array.append(x)
+print(solution_Object.maxSubArray(array))
+
