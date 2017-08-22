@@ -1,3 +1,13 @@
+"""
+#  Programmer     : Dhruv Patel
+#  Problem Name   : Search
+#  Used In        : Practice
+#  Used As        : Data Processing
+#  Thoughts      =>  
+#  O(N)             This program opens the database and split the .csv file into the two coloumns.
+#                   One is a product name and other one is a company.The search_utility simply
+#                   search for the key in out built up dictionary and return its value if found.
+"""
 import time
 
 """
