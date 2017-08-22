@@ -1,6 +1,16 @@
+""" Programmer     : Dhruv Patel
+#  Problem Name   : Level_2 JSON viewer
+#  Used In        : Pyhton
+#  Used As        : Practice
+#  Problem      =>
+#                   Given input JSON file we parse the and seprate the json with the level_2 nesting 
+#  Thoughts     => 
+#                   We are using the JSON library for the processing the input.After we process the initial
+#                   key then we separate the nested JSON key values into the dictionary format via childOfparent
+#                   function which output the separate the data in JSON. 
+"""
+
 import json
-
-
 def childOfparent(parent, **data):
     for key in keysOfjson:
         temp = {}
