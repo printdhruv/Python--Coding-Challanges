@@ -1,0 +1,16 @@
+#  Programmer     : Dhruv Patel
+#  Problem Name   : CodingBat.com
+#  Used In        : Python
+#  Used As        : Warmup-2
+#  Thoughts      =>  
+#                   Given a string and a non-negative int n, return a larger string that is n copies of the original string.
+#
+
+'''
+   Warmup-1 > sleep_in 
+                    The parameter weekday is True if it is a weekday, and the parameter vacation is True if we are on vacation.
+                    We sleep in if it is not a weekday or we're on vacation. Return True if we sleep in.
+                    sleep_in(False, False) → True
+                    sleep_in(True, False) → False
+                    sleep_in(False, True) → True
+'''
