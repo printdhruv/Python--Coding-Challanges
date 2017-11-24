@@ -1,4 +1,5 @@
-/* Programmer     : Dhruv Patel
+'''
+*  Programmer     : Dhruv Patel
 *  Problem Name   : Pattern Count
 *  Used In        : Hackerrank contest - 33
 *  Used As        : Contest
@@ -21,7 +22,7 @@
 *       2
 *       2
 *       3
-
+'''
 #!/bin/python3
 
 import sys
