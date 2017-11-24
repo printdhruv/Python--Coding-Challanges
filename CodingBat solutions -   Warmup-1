@@ -1,4 +1,5 @@
-/* Programmer     : Dhruv Patel
+'''
+*  Programmer     : Dhruv Patel
 *  Problem Name   : CodingBat.com
 *  Used In        : Python
 *  Used As        : Warmup-1
@@ -6,7 +7,8 @@
 *                   This file will contain the solutions for the codingbat.com in attempt to have digest
 *                   for my coderschool kids.It's my own version of solutions which might be diffrent then
 *                   the actual ones.
-*/
+*
+'''
 '''
    Warmup-1 > sleep_in 
                     The parameter weekday is True if it is a weekday, and the parameter vacation is True if we are on vacation.
