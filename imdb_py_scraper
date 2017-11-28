@@ -1,0 +1,103 @@
+'''
+*  Programmer     : Dhruv Patel
+*  Problem Name   : Local Imdb.com scraper
+*  Used In        : Python
+*  Used As        : bs4,requests package practice
+*  Thoughts      =>  
+*                   This file will run scraper to fetch DOM info and will write json file eventually.
+'''
+import json
+import requests
+import collections
+from bs4 import BeautifulSoup
+
+url = "http://www.imdb.com/title/tt3179610/?ref_=ttfc_fc_tt"
+imdb = "http://www.imdb.com"
+response = requests.get(url)
+soup = BeautifulSoup(response.content, 'html.parser')
+meta_info = collections.OrderedDict()
+meta_info["title"] = soup.title.string
+tv_specific = collections.OrderedDict()
+tv_specific["show_name"] = soup.title.string
+season, episode = soup.find("div", {"class": "bp_heading"}).get_text().split("|")
+tv_specific["season_number"] = int(season.split(" ")[1])
+tv_specific["episode_name"] = str(soup.select('h1')[1].get_text())
+tv_specific["episode_number"] = int(episode.split(" ")[2])
+string_number = soup.find("span", {"class": "parentDate"}).get_text()
+temp = ""
+for i in string_number:
+    if i.isdigit():
+        temp += i
+meta_info["year_produced"] = int(temp)
+director = collections.OrderedDict()
+director["name"] = soup.find("span", {"itemprop": "director"}).get_text()
+imdb_profile_url = "http://www.imdb.com"
+dir_ = soup.find("span", {"itemprop": "director"})
+imdb_profile_url += dir_.a['href']
+director["imdb_profile_url"] = imdb_profile_url
+meta_info["director"] = director
+
+cast_url = imdb + "/title/tt3179610/"
+director_url = ""
+for i in soup.find_all("div", attrs={"class": "article", "class": "see-more"}):
+    if "fullcredits" in i.a['href']:
+        cast_url += i.a['href']
+        break
+
+response_cast = requests.get(cast_url)
+s = BeautifulSoup(response_cast.content, 'html.parser')
+costume_design = collections.OrderedDict()
+k = s.find('table')
+for c in s.find_all('h4', attrs={"class": "dataHeaderWithBorder"}):
+    if "Costume Design by" in c.get_text():
+        costume_design["name"] = k.get_text()
+        costume_design["imdb_profile_url"] = imdb + k.a['href']
+    k = k.find_next('table')
+producers_and_studios = []
+director_of_photography = collections.OrderedDict()
+for data in s.find_all("table", attrs={"class": "simpleTable simpleCreditsTable"}):
+    for p in data.find_all("tr"):
+        name = ""
+        role = ""
+        for r in p.find_all('td', attrs={"class": "name"}):
+            name = r.get_text().replace(" ", "")
+            director_url += r.a['href']
+        for r in p.find_all('td', attrs={"class": "credit"}):
+            role = r.get_text().replace(" ", "")
+        if "directorofphotography" in role:
+            director_of_photography["name"] = name
+            director_of_photography["director_url"] = director_url
+        if "producer" in role and len(role) <= 10:
+            dict = collections.OrderedDict()
+            dict["name"] = name
+            dict["imdb_profile_url"] = imdb + director_url
+            producers_and_studios.append(dict)
+        director_url = ""
+meta_info["producers_and_studios"] = producers_and_studios
+people = []
+for data in s.find_all("table", attrs={"class": "cast_list"}):
+    for p in data.find_all("tr"):
+        directory_of_people = collections.OrderedDict()
+        actor_name = actor_profile_url = character_name = character_profile_url = ""
+        for k in p.find_all("td", attrs={"class": "itemprop"}):
+            actor_name = k.get_text().replace(" ", "")
+            actor_profile_url = imdb + k.a['href']
+        for kk in p.find_all("td", attrs={"class": "character"}):
+            character_name = kk.get_text().replace(" ", "")
+            if type(kk.a) is not None.__class__:
+                character_profile_url = imdb + kk.a['href']
+            else:
+                character_profile_url = ""
+        directory_of_people["actor_name"] = actor_name
+        directory_of_people["actor_profile_url"] = actor_profile_url
+        directory_of_people["character_name"] = character_name
+        directory_of_people["character_profile_url"] = character_profile_url
+        people.append(directory_of_people)
+meta_info["people"] = people
+meta_info["director_of_photography"] = director_of_photography
+meta_info["costume_design"] = costume_design
+meta_info["tv_specific"] = tv_specific
+
+print(meta_info)
+with open("output.json", 'w') as out:
+    out.write(json.dumps(meta_info))
