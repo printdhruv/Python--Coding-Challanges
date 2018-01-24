@@ -1,7 +1,7 @@
 """ 
 #  Programmer     : Dhruv Patel
 #  Problem Name   : Level_2 JSON viewer
-#  Used In        : Pyhton
+#  Used In        : Python
 #  Used As        : Practice
 #  Problem      =>
 #                   Given input JSON file we parse the and seprate the json with the level_2 nesting 
