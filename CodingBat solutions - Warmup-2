@@ -1,3 +1,4 @@
+'''
 #  Programmer     : Dhruv Patel
 #  Problem Name   : CodingBat.com
 #  Used In        : Python
@@ -6,6 +7,7 @@
 #                   This file will contain the solutions for the codingbat.com in attempt to have digest                   
 #                   for my coderschool kids.It's my own version of solutions which might be diffrent then
 #                   the actual ones.
+'''
 
 '''
    Warmup-2 > string_times 
