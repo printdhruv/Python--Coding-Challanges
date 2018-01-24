@@ -1,10 +1,10 @@
 '''
-*  Programmer     : Dhruv Patel
-*  Problem Name   : Local Imdb.com scraper
-*  Used In        : Python
-*  Used As        : bs4,requests package practice
-*  Thoughts      =>  
-*                   This file will run scraper to fetch DOM info and will write json file eventually.
+#  Programmer     : Dhruv Patel
+#  Problem Name   : Local Imdb.com scraper
+#  Used In        : Python
+#  Used As        : bs4,requests package practice
+#  Thoughts      =>  
+#                   This file will run scraper to fetch DOM info and will write json file eventually.
 '''
 import json
 import requests
