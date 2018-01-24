@@ -1,24 +1,24 @@
 '''
-* Programmer     : Dhruv Patel
-*  Problem Name   : Average of Levels in Binary Tree
-*  Used In        : LeetCode Weekly Contest 40
-*  Used As        : Problem
-*  Problem      =>
-*                   Given a non-empty binary tree, return the average value of the nodes on each level in the form of an array.
-*  Thoughts     => 
-*  The following code initializes the class TreeNode and implements a method averageOfLevels which takes the input of a root 
-*  and return the list of data_type Float. There are several ways which one can attack this problem. One of the naive way is to
-*  use Breadth First Search algorithm to iterate through nodes.
-*
-*  Sample Input =>
-*                    3
-*                   / \
-*                  9  20
-*                    /  \
-*                   15   7
-*
-*  Sample Output =>
-*                   [3, 14.5, 11] 
+#  Programmer     : Dhruv Patel
+#  Problem Name   : Average of Levels in Binary Tree
+#  Used In        : LeetCode Weekly Contest 40
+#  Used As        : Problem
+#  Problem      =>
+#                   Given a non-empty binary tree, return the average value of the nodes on each level in the form of an array.
+#  Thoughts     => 
+#  The following code initializes the class TreeNode and implements a method averageOfLevels which takes the input of a root 
+#  and return the list of data_type Float. There are several ways which one can attack this problem. One of the naive way is to
+#  use Breadth First Search algorithm to iterate through nodes.
+#
+#  Sample Input =>
+#                    3
+#                   / \
+#                  9  20
+#                    /  \
+#                   15   7
+#
+#  Sample Output =>
+#                   [3, 14.5, 11] 
 '''
 #!/bin/python3
 import queue
