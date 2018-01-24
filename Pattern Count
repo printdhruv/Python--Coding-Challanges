@@ -1,27 +1,27 @@
 '''
-*  Programmer     : Dhruv Patel
-*  Problem Name   : Pattern Count
-*  Used In        : Hackerrank contest - 33
-*  Used As        : Contest
-*  Thoughts     => 
-*  The following code checks 1(0+)1 pattern across string using Regex with (?= lookahead assertion: matches without consuming).
-*  The function simply return the occurrences of total matches.
-*
-*  Constraints  =>
-*     1<=q<=20
-*     1<=|s|<=2000
-*     s contains only digits and lowercase English letters
-*
-*  Sample Input =>
-*       3                                 // Number of queries 
-*       100001abc101     
-*       1001ab010abc01001
-*       1001010001
-*
-*  Sample Output =>
-*       2
-*       2
-*       3
+#  Programmer     : Dhruv Patel
+#  Problem Name   : Pattern Count
+#  Used In        : Hackerrank contest - 33
+#  Used As        : Contest
+#  Thoughts     => 
+#  The following code checks 1(0+)1 pattern across string using Regex with (?= lookahead assertion: matches without consuming).
+#  The function simply return the occurrences of total matches.
+#
+#  Constraints  =>
+#     1<=q<=20
+#     1<=|s|<=2000
+#     s contains only digits and lowercase English letters
+#
+#  Sample Input =>
+#       3                                 // Number of queries 
+#       100001abc101     
+#       1001ab010abc01001
+#       1001010001
+#
+#  Sample Output =>
+#       2
+#       2
+#       3
 '''
 #!/bin/python3
 
