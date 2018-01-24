@@ -1,0 +1,60 @@
+"""
+#  Programmer     : Dhruv Patel
+#  Problem Name   : Bubble Sort
+#  Used In        : Python
+#  Used As        : Practice
+#  Problem        =>
+#                       Brute Force Implementation of Bubble - sort
+#  Thoughts       =>
+#                       Brute - Force with optimized approach :-
+#                       We are generating random numbers of 1000 from a range of -999 to 999.
+#                       We are using boolean flag based implementation of a algorithm,which
+#                       sorts the list and set the boolean flag every - time.
+#                       After each for loop executes the biggest elements bubble out to
+#                       the end hence we must not look nth place and reduce it by 1.
+#                       The loop get terminated by itself if there is no swap.
+#  Time - Complexity =>
+                        Best     -  Ω(n)
+                        Average  -  Θ(n^2)
+                        Worst    -  Θ(n^2)
+
+#  Space - Complexity =>
+                        Worst    -  Θ(1)
+"""
+import random
+
+import time
+
+
+def bubble_sort(x):                             # x is the number of elements in the list
+    l = []
+    for j in range(x):
+        l.append(random.randint(-9999, 9999))  # We are appending the numbers from range -9999,9999
+    flag = True                                # Boolean to track the swap
+    start_time = time.time()                   # Storing starting time before sorting operation
+    while flag:
+        flag = False                           # We are setting false if there is not swap the loop will break
+        N = len(l)                             # N is the number of elements in the list 'or' x can be used as well
+        for i in range(1, N):
+            if l[i - 1] > l[i]:                # Bubble condition
+                temp = l[i - 1]
+                l[i - 1] = l[i]
+                l[i] = temp
+                flag = True                    # We set the flag True if the swap occurred and the largest element
+    return time.time() - start_time            # to the end place
+
+
+print("The round-time elapsed for 1000 elements ", round(bubble_sort(1000)))
+print("The round-time elapsed for 2000 elements ", round(bubble_sort(2000)))
+print("The round-time elapsed for 3000 elements ", round(bubble_sort(3000)))
+print("The round-time elapsed for 4000 elements ", round(bubble_sort(4000)))
+print("The round-time elapsed for 5000 elements ", round(bubble_sort(5000)))
+
+'''
+Output :-
+                        The round-time elapsed for 1000 elements  1
+                        The round-time elapsed for 2000 elements  2
+                        The round-time elapsed for 3000 elements  5
+                        The round-time elapsed for 4000 elements  9
+                        The round-time elapsed for 5000 elements  17
+'''
