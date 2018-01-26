@@ -1,0 +1,57 @@
+"""
+#  Programmer     : Dhruv Patel
+#  Problem Name   : Selection Sort
+#  Used In        : Python
+#  Used As        : Practice
+#  Problem        =>
+#                       Implementation of Selection - sort
+#  Thoughts       =>
+#                       Insertion sort pick minimum element from range [i+1..N] and swap it with the
+#                       ith element with reference to the outer loop.
+#                       The algorithms sort the numbers in place so the space - Complexity will
+#                       be O(1) just like the insertion sort.
+#  Time - Complexity =>
+                        Best     -  Ω(n)
+                        Average  -  Θ(n^2)
+                        Worst    -  O(n^2)
+
+#  Space - Complexity =>
+                        Worst    -  Θ(1)
+"""
+import random
+import time
+def selection_Sort(x):                             
+    l = []
+    for j in range(x):
+        l.append(random.randint(-9999, 9999))  
+    N = len(l)
+    start_time = time.time()
+    for i in range(0,N-1):
+      min = l[i]
+      index = i
+      flag = False
+      for j in range(i+1,N):
+        if l[j] < min:
+          min = l[j]
+          index = j
+          flag = True
+      if flag:
+        temp = l[i]
+        l[i] = min
+        l[index] = temp
+    return time.time() - start_time            
+
+print("The round-time elapsed to sort 1000 elements by selection sort ", round(selection_Sort(1000)))
+print("The round-time elapsed to sort 2000 elements by selection sort ", round(selection_Sort(2000)))
+print("The round-time elapsed to sort 4000 elements by selection sort ", round(selection_Sort(4000)))
+print("The round-time elapsed to sort 8000 elements by selection sort ", round(selection_Sort(8000)))
+print("The round-time elapsed to sort 16000 elements by selection sort ", round(selection_Sort(16000)))
+
+'''
+Output :-
+                        The round-time elapsed to sort 1000 elements by selection sort  0
+                        The round-time elapsed to sort 2000 elements by selection sort  0
+                        The round-time elapsed to sort 4000 elements by selection sort  1
+                        The round-time elapsed to sort 8000 elements by selection sort  4
+                        The round-time elapsed to sort 16000 elements by selection sort  17
+'''
