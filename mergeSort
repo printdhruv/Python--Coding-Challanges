@@ -1,0 +1,114 @@
+"""
+#  Programmer     : Dhruv Patel
+#  Problem Name   : Merge Sort
+#  Used In        : Python
+#  Used As        : Practice - Divide and Conquer
+#  Problem        =>
+#                       Implementation of Selection - sort
+#  Thoughts       =>
+#                       Merge Sort implemented with divide and conquer approach.
+#                       It first merges the elements into the smaller parts till it gets to size 1.
+#                       Then we merge the result into the new array which will merge all parts.
+#                       The divide step will take log(n) time and merging require each elements to
+#                       visit hence the total time-complexity is (n log(n)) regardless of the input order.
+#                       We also use recursion here where every time we call the function it calls up
+#                       a memory stack frame and foot print as well. Also, the additional space require
+#                       while merging an array hence the space complexity in O(n)
+#                       i.e,
+#                          Split and merge for [4,3,2,1] will look like this,
+#                                             _____|_____                      ___________________________
+#                                             |         |                                                 |
+#                                          ___|___   ___|___                                              |
+#                                           [4,3]     [2,1]                     Divide/Split an array     |
+#                                         ____|____  ___|____                   into two parts till the   |
+#                                         |        ||        |                  size is 1                 |
+#                                        [4]     [3][2]     [1]                ___________________________|                
+#                                         |       |  |       |
+#                                          -------    -------                  ---------------------------
+#                                             |          |                                                |
+#                                           [3,4]      [1,2]                    Merge smallers parts into |
+#                                             |          |                      sorted result till we get |
+#                                              ----------                       the final answer          |
+#                                               [1,2,3,4]                       --------------------------
+#
+#                      
+#  Time - Complexity =>
+#                        Best     -  Ω(n log(n))
+#                        Average  -  Θ(n log(n))
+#                        Worst    -  O(n log(n))
+
+#  Space - Complexity =>
+                         Worst    -  O(n)
+                        
+import random
+import time
+
+
+def merge(l, r):
+    answer = []
+    i = 0
+    j = 0
+    while i < len(l) and j < len(r):
+        if l[i] > r[j]:
+            answer.append(r[j])
+            j = j + 1
+        else:
+            answer.append(l[i])
+            i = i + 1
+    while i < len(l):
+        answer.append(l[i])
+        i = i + 1
+    while j < len(r):
+        answer.append(r[j])
+        j = j + 1
+    return answer
+
+
+def mergeSort(x):
+    if len(x) == 0 or len(x) == 1:
+        return x
+    else:
+        middle = len(x) // 2
+        left = mergeSort(x[0:middle])
+        right = mergeSort(x[middle:])
+    return merge(left, right)
+
+
+def fillList(x):
+    array = []
+    for i in range(x):
+        array.append(random.randint(-999, 999))
+    return mergeSort(array)
+start = time.time()
+fillList(200000)
+print("For sorting 200000 elements mergeSort took time",
+      round(time.time()-start))
+start = time.time()
+fillList(400000)
+print("For sorting 400000 elements mergeSort took time",
+      round(time.time()-start))
+start = time.time()
+fillList(800000)
+print("For sorting 800000 elements mergeSort took time",
+      round(time.time()-start))
+start = time.time()
+fillList(1600000)
+print("For sorting 1600000 elements mergeSort took time",
+      round(time.time()-start))
+start = time.time()
+fillList(3200000)
+print("For sorting 3200000 elements mergeSort took time",
+      round(time.time()-start))
+start = time.time()
+fillList(6400000)
+print("For sorting 6400000 elements mergeSort took time",
+      round(time.time()-start))
+
+""" 
+    Output:-
+    For sorting 200000 elements  mergeSort took time 8
+    For sorting 400000 elements  mergeSort took time 16
+    For sorting 800000 elements  mergeSort took time 34
+    For sorting 1600000 elements mergeSort took time 71
+    For sorting 3200000 elements mergeSort took time 143
+"""
